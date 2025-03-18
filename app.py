@@ -1,12 +1,14 @@
 from flask import Flask, request, jsonify
-import joblib  # Use joblib instead of pickle
+from flask_cors import CORS
+import joblib  
 import numpy as np
 
-# Load the model and scaler using joblib
+# Load the model and scaler
 model = joblib.load('diabetes_voting_model.pkl')
 scaler = joblib.load('scaler.pkl')
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS
 
 @app.route('/', methods=['GET'])
 def home():

@@ -12,12 +12,12 @@ scaler = joblib.load('scaler.pkl')
 app = Flask(__name__)
 CORS(app)  # Enable CORS for cross-origin requests
 
-# ✅ API home route
+#  API home route
 @app.route('/', methods=['GET'])
 def home():
     return "Diabetes Prediction API is Running!"
 
-# ✅ Prediction route
+#  Prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
     """Predicts diabetes based on input features."""
@@ -70,7 +70,7 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 
-# ✅ SHAP feature importance route
+#  SHAP feature importance route
 @app.route('/explain', methods=['POST'])
 def explain():
     """Returns SHAP feature importance for a prediction."""
@@ -114,7 +114,7 @@ def explain():
         return jsonify({"error": str(e)}), 500
 
 
-# ✅ AI Insights Function
+# AI Insights Function
 def generate_insights(features):
     """Generates AI-based insights based on the input features."""
     insights = []
@@ -150,6 +150,6 @@ def generate_insights(features):
     return insights
 
 
-# ✅ Run the Flask app
+# Run the Flask app
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port=5000, debug=True)
